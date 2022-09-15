@@ -3,7 +3,7 @@
 /**
  *main - prints the _putchar and loop
  */
-int main(void)
+void print_alphabet_x10(void)
 {
 	int d;
 	int b;
