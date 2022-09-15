@@ -1,6 +1,7 @@
-#include "main.h"
+#include "main.h";
 
-/** Printing _putchar 
+/** 
+ * Printing _putchar 
  * with the putchar command
  */
 int main(void)
