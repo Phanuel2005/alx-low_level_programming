@@ -1,15 +1,24 @@
+#include "main.h"
 #include <stdio.h>
 
 /**
- * main- calls all the program function
- * @argc: counts the number of parameters passed into the program
- * @argv: Saves the string of the parameters passed into the program
- * Return: Returns the null
+ * main - program that prints its name
+ * @argc: argument count
+ * @argv: argunment vector
+ *
+ * Return: int
  */
 
 int main(int argc, char *argv[])
 {
-	printf("%s\n", argv[0]);
+	int count;
 
+	for (count = 0; count < argc; count++)
+	{
+		if (argc == 1)
+			printf("%s\n", argv[count]);
+		else
+			break;
+	}
 	return (0);
 }
