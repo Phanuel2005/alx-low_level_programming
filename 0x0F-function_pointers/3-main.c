@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "3-calc.h"
+#include "function_pointers.h"
 
 /**
   *main - A program that performs simple operations.
@@ -9,39 +10,34 @@
   *Return: 0 on sucessful exit.
   */
 
-int main(int argc, char **argv)
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
-	int num1, num2, res;
-	char sign;
+	int num1, num2;
 	char *op;
-	int (*ope)(int, int);
 
 	if (argc != 4)
 	{
-		printf("Error");
+		printf("Error\n");
 		exit(98);
 	}
 
-	sign = argv[2][0];
+	num1 = atoi(argv[1]);
+	op = argv[2];
+	num2 = atoi(argv[3]);
 
-	if ((sign != '+' && sign != '-' && sign != '*' && sign != '/' && sign != '%') || argv[2][1] != '\0')
+	if (get_op_func(op) == NULL || op[1] != '\0')
 	{
-		printf("Error");
+		printf("Error\n");
 		exit(99);
 	}
 
-	num1 = atoi(argv[1]);
-	num2 = atoi(argv[3]);
-
-	if (num2 == 0 && (sign == '%' || sign == '/'))
+	if ((*op == '/' && num2 == 0) || (*op == '%' && num2 == 0))
 	{
-		printf("Error");
+		printf("Error\n");
 		exit(100);
 	}
 
-	op = argv[2];
-	ope = get_op_func(op);
-	res = ope(num1, num2);
-	printf("%d\n", res);
+	printf("%d\n", get_op_func(op)(num1, num2));
+
 	return (0);
-	}
+}
